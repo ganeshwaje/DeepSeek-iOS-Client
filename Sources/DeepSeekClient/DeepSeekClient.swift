@@ -20,7 +20,7 @@ public actor DeepSeekClient {
     case apiError(String)
   }
   
-  public struct Configuration {
+  public struct Configuration: Sendable {
     let apiKey: String
     let baseURL: URL
     let session: URLSession
@@ -42,7 +42,7 @@ public actor DeepSeekClient {
     self.session = configuration.session
   }
   
-  public struct ChatMessage: Codable {
+  public struct ChatMessage: Codable, Sendable {
     public let role: String
     public let content: String
     
@@ -52,7 +52,7 @@ public actor DeepSeekClient {
     }
   }
   
-  public struct ChatCompletionRequest: Codable {
+  public struct ChatCompletionRequest: Codable, Sendable {
     public let messages: [ChatMessage]
     public let model: String
     public let temperature: Double?
@@ -78,11 +78,11 @@ public actor DeepSeekClient {
     }
   }
   
-  public struct ChatCompletionResponse: Decodable {
+  public struct ChatCompletionResponse: Codable, Sendable {
     public let id: String
     public let choices: [Choice]
     
-    public struct Choice: Decodable {
+    public struct Choice: Codable, Sendable {
       public let message: ChatMessage
       public let finishReason: String?
       
@@ -149,10 +149,10 @@ public actor DeepSeekClient {
   }
 }
 
-private struct APIErrorResponse: Decodable {
+struct APIErrorResponse: Codable {
   let error: APIError?
   
-  struct APIError: Decodable {
+  struct APIError: Codable {
     let message: String
   }
 }
