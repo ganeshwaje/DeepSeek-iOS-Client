@@ -122,6 +122,10 @@ Check out the example app in the repository for a complete SwiftUI implementatio
 - SwiftUI Navigation
 - MVVM architecture
 
+## Screenshots
+
+<img src="./chatscreen1.png" width="200" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="./chatscreen2.png" width="200" />
+
 ## Requirements
 
 - iOS 13.0+ / macOS 10.15+
