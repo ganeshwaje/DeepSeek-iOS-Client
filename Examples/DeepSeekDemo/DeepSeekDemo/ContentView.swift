@@ -32,7 +32,11 @@ struct ContentView: View {
         
         HStack {
           TextField("Type a message...", text: $viewModel.currentInput)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(4)
+            .overlay(
+              RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.gray, lineWidth: 2)
+            )
             .disabled(viewModel.isLoading)
           
           Button(action: {
